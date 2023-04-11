@@ -1,0 +1,38 @@
+<div class="container-fluid">
+  <div *ngIf='orderSent' class="m-2 text-center">
+    <h2>Thanks!</h2>
+    <p>Thanks for placing your order.</p>
+    <p>Have fan in the event.</p>
+    <button class="btn btn-primary" routerLink='/event-list'>Return to Event Store</button>
+  </div>
+
+  <!-- Form -->
+  <form *ngIf='!orderSent' #form='ngForm' novalidate
+    (ngSubmit)='submitOrder(form)' class="m-2">
+
+    <div class="form-group">
+      <label>Name</label>
+      <input class="form-control" #name='ngModel' name='name'
+      [(ngModel)]='order.name' required>
+      <span *ngIf='submitted && name.invalid' class="text-danger">
+        Please enter your name.
+      </span>
+    </div>
+
+    
+    <div class="form-group">
+      <label>Email</label>
+      <input class="form-control" #country='ngModel' name='email'
+      [(ngModel)]='order.email' required>
+      <span *ngIf='submitted && country.invalid' class="text-danger">
+        Please enter your email
+      </span>
+    </div>
+
+    <div class="text-center">
+      <button class="btn btn-secondary m-1" routerLink='/cart'>Back</button>
+      <button class="btn btn-primary m-1" type="submit">Book Ticket</button>
+    </div>
+
+  </form>
+</div>

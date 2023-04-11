@@ -1,0 +1,54 @@
+<style>
+  .btn-primary {
+    color: #fff;
+    background-color:#208c39;
+    border-color: #208c39;
+    
+}
+.btn-danger {
+    color: #fff;
+    background-color: rgb(198, 57, 57);
+    border-color: rgb(198, 57, 57);
+}
+#add{
+  color: #fff;
+    background-color:rgb(241, 210, 34);
+    border-color:rgb(241, 210, 34);
+
+    
+}
+</style>
+<table class="table table-sm table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Date</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let b of getEvents()'>
+        <td>{{ b.name }}</td>
+        <td>{{ b.date }}</td>        
+        <td>{{ b.description }}</td>
+        <td>{{ b.price | currency: 'USD': 'symbol': '2.2-2'}}</td>
+        <td>
+          <button class="btn btn-sm btn-primary m-1" (click)='editEvent(b._id)'>
+            <i class="fas fa-pencil-alt"></i> Edit
+          </button>
+        </td>
+        <td>
+          <button class="btn btn-sm btn-danger m-1" (click)='deleteEvent(b._id)'>
+            <i class="fas fa-trash-alt"></i> Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-primary" id="add"  (click)='addEvent()'>
+    <i class="fas fa-plus-circle"></i> Add New Event
+  </button>
+  
